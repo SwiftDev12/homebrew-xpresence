@@ -1,7 +1,7 @@
 class Xpresence < Formula
   desc "Discord Rich Presence for Xcode"
   homepage "https://github.com/SwiftDev12/XcodeRPC"
-  url "https://github.com/SwiftDev12/XcodeRPC/releases/latest/download/xcode_rpc.tar.gz"
+  url "https://github.com/SwiftDev12/XcodeRPC/releases/download/v1.0.0/xcode_rpc.tar.gz"
   version "1.0.0"
 
   livecheck do
