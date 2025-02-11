@@ -17,29 +17,12 @@ class Xpresence < Formula
     bin.install "xcode_rpc.py"
   end
 
-  plist_options startup: true
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-        "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-        <dict>
-          <key>Label</key>
-          <string>com.swiftdev12.xpresence</string>
-          <key>ProgramArguments</key>
-          <array>
-            <string>/usr/local/bin/python3</string>
-            <string>#{bin}/xcode_rpc.py</string>
-          </array>
-          <key>RunAtLoad</key>
-          <true/>
-          <key>KeepAlive</key>
-          <true/>
-        </dict>
-      </plist>
-    EOS
+  service do
+    run ["/usr/bin/python3", opt_bin/"xcode_rpc.py"]
+    keep_alive true
+    run_at_load true
+    working_dir var
+    log_path var/"log/xpresence.log"
+    error_log_path var/"log/xpresence.log"
   end
 end
-
